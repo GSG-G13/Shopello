@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   height: fit-content;
@@ -8,7 +9,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   width: 100px;
   cursor: pointer;
   text-decoration: none;
@@ -22,6 +23,10 @@ export const RightSide = styled.div`
   display: flex;
   align-items: center;
   gap: 0.7rem;
+
+  svg{
+    cursor: pointer;
+  }
 `;
 
 export const CartIcon = styled.div`
