@@ -1,5 +1,6 @@
-const express = require('express');
-const db = require('./database/config/connection');
+import express from 'express';
+import db from './database/config/connection.js';
+import router from './routes/router.js';
 // const { User, CartItems } = require('./database/models/index');
 
 const app = express();
@@ -9,6 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 /*
   CURD operations are here
 */
+
+app.use(router);
 
 db.authenticate()
   .then(() => {
