@@ -1,20 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Button = styled.button`
-  padding: 8px 16px;
-  border: none;
-  background: #2CB674;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-
-  &:hover {
-    background-color: #ccc;
-  }
-`;
+import { Button } from './Style.css';
 
 function AddToCart({ itemId }) {
   const handleAddToCart = () => {
