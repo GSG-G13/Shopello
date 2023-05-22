@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-const Sequelize = require('sequelize');
-const db = require('../config/connection');
-const userModel = require('./user');
-const cartItemsModel = require('./cart');
-const productModel = require('./products');
+import Sequelize from 'sequelize';
+import db from '../config/connection';
+import userModel from './user';
+import cartItemsModel from './cart';
+import productModel from './products';
 
 const User = userModel(db, Sequelize);
 const CartItems = cartItemsModel(db, Sequelize);
@@ -23,7 +23,7 @@ db.sync({ force: false })
     console.err(err);
   });
 
-module.exports = {
+export {
   User,
   CartItems,
   Product,

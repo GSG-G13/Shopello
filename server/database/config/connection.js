@@ -1,6 +1,6 @@
-const { Sequelize } = require('sequelize');
-const pg = require('pg');
-require('dotenv').config();
+import Sequelize from 'sequelize';
+import pg from 'pg';
+import {} from 'dotenv/config';
 
 pg.defaults.ssl = true;
 
@@ -13,7 +13,7 @@ const config = {
   port: process.env.DB_PORT,
 };
 
-const connect = new Sequelize(
+const connection = new Sequelize(
   config.database,
   config.username,
   config.password,
@@ -29,4 +29,4 @@ const connect = new Sequelize(
   },
 );
 
-module.exports = connect;
+export default connection;
