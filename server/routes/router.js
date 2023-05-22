@@ -1,5 +1,4 @@
 import express from 'express';
-
 import {
   getCartItems,
   addToCart,
@@ -7,7 +6,6 @@ import {
 } from '../controllers/cart/cart';
 
 const router = express.Router();
-
 
 // Cart Routes
 router.get('/cart', getCartItems);
