@@ -85,7 +85,7 @@ function Cart() {
           console.log('Item removed from cart');
           fetch('/cart')
             .then((response) => response.json())
-            .then((data) => setCartItems(data))
+            .then(() => setCartItems(data))
             .catch((error) => console.error(error));
         } else {
           console.error('Failed to remove item from cart');

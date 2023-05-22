@@ -5,7 +5,7 @@ const Button = styled.button`
   padding: 8px 16px;
   border: none;
   background: #2CB674;
-border-radius: 50px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -15,14 +15,15 @@ border-radius: 50px;
     background-color: #ccc;
   }
 `;
-function AddToCart({ productId }) {
+
+function AddToCart({ itemId }) {
   const handleAddToCart = () => {
-    fetch('/addToCart', {
+    fetch(`/addToCart/${itemId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ productId }),
+      body: JSON.stringify({ itemId }),
     })
       .then((response) => response.json())
       .then((data) => {
