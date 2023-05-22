@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import SingIn from './components/Account/SingIn';
+import Header from './components/header/Header';
 
 function App() {
   return (
-    <div className="App">
-      <SingIn />
+    <div>
+      <Header />
     </div>
   );
 }
