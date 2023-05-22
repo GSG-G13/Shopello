@@ -1,26 +1,9 @@
-import express from 'express';
-import db from './database/config/connection.js';
-import router from './routes/router.js';
-// const { User, CartItems } = require('./database/models/index');
+import app from './app.js';
+import sequelize from './database/config/connection.js';
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-/*
-  CURD operations are here
-*/
-
-app.use(router);
-
-db.authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+sequelize.sync().then(() => {
+  app.listen(3000, () => {
+    // eslint-disable-next-line no-console
+    console.log('Server is running on http://127.0.0.1:3000');
   });
-
-app.listen(3000, () => {
-  console.log('Server is running on http://127.0.0.1:3000');
 });

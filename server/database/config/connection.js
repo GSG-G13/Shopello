@@ -1,32 +1,13 @@
-const { Sequelize } = require('sequelize');
-const pg = require('pg');
-require('dotenv').config();
+import Sequelize from 'sequelize';
+import {} from 'dotenv/config';
 
-pg.defaults.ssl = true;
-
-const config = {
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  host: process.env.DB_HOST,
-  dialect: process.env.DB_DIALECT,
-  port: process.env.DB_PORT,
-};
-
-const connect = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
+const connection = new Sequelize(
+  process.env.DEV_DB_URL,
   {
-    host: config.host,
-    dialect: config.dialect,
-    port: config.port,
-    pool: {
-      max: 5,
-      min: 0,
-      idle: 10000,
-    },
+    // ssl: true,
+    dialect: 'postgres',
+    logging: false,
   },
 );
 
-module.exports = connect;
+export default connection;
