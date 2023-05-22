@@ -1,5 +1,6 @@
 import express from 'express';
-import db from './database/config/connection';
+// eslint-disable-next-line import/extensions
+import db from './database/config/connection.js';
 
 const app = express();
 app.use(express.json());
