@@ -14,7 +14,6 @@ function Cart() {
       .then((response) => response.json())
       .then((data) => setCartItems(data))
       .catch((error) => {
-        console.error(error);
         Swal.fire({
           icon: 'error',
           title: 'An error occurred',

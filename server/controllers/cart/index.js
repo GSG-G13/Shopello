@@ -5,7 +5,7 @@ import {
   deleteFromCartQuery,
   getProductFromCartQuery,
   deleteAllFromCartQuery, updateCartQuery,
-} from '../../database/queries';
+} from '../../database/queries/index.js';
 
 const getProductFromCart = (req, res, next) => {
   const { userID, productID } = req.params;

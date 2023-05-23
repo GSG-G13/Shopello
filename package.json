@@ -4,6 +4,7 @@
   "description": "Browse &amp; discover millions of products find the best seller. We ship to over 100 international destinations, right to your doorstep.",
   "main": "index.js",
   "scripts": {
+    "start":"node server/index.js && react-scripts client/start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

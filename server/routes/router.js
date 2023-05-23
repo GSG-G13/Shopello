@@ -5,11 +5,11 @@ import {
   removeFromCart,
   updateCart,
   clearCart,
-} from '../controllers/cart/cart';
+} from '../controllers/cart/index.js';
 
 const router = express.Router();
 
-router.post('/search/:product', getSearchProducts);
+// router.post('/search/:product', getSearchProducts);
 
 // Cart Routes
 router.get('/cart/:userID/:productID', getProductFromCart);

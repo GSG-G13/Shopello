@@ -5,9 +5,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import SingIn from './components/Account/SingIn';
-import SingUp from './components/Account/SingUp';
-import Home from './pages/home/Home';
+import SingIn from './components/Account/SingIn.jsx';
+import SingUp from './components/Account/SingUp.jsx';
+import Home from './pages/home/Home.jsx';
+import Cart from './components/Cart/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
     path: '/singup',
     element: <SingUp />,
   },
+  {
+    path: '/cart',
+    element: <Cart />,
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

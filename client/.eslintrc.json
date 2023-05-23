@@ -30,7 +30,15 @@
                     ".jsx"
                 ]
             }
-        ] //should add ".ts" if typescript project
+        ], //should add ".ts" if typescript project
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never"
+            }
+          ]
     }
 }
 
