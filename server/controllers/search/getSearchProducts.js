@@ -1,5 +1,3 @@
-import { Product } from '../../database/models';
-
 const getSearchProducts = async (req, res) => {
   try {
     const { product } = req.params;
@@ -15,7 +13,6 @@ const getSearchProducts = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       error: true,
       data: {
