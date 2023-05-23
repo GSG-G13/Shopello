@@ -1,15 +1,16 @@
 import express from 'express';
+// import getSearchProducts from './../controllers/search/getSearchProducts';
 import {
   getProductFromCart,
   addToCart,
   removeFromCart,
   updateCart,
   clearCart,
-} from '../controllers/cart/cart';
+} from '../controllers/cart/cart.js';
 
 const router = express.Router();
 
-router.post('/search/:product', getSearchProducts);
+// router.post('/search/:product', getSearchProducts);
 
 // Cart Routes
 router.get('/cart/:userID/:productID', getProductFromCart);
