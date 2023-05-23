@@ -2,14 +2,15 @@ import bcrypt from 'bcrypt';
 import customError from '../../utils/helper';
 import { signToken } from '../../utils/jwt';
 import { signupSchema } from '../../utils/validation';
-import { User } from '../../database/models';
+import getUserByEmailQuery from '../../database/queries/users/getUserByEmailQuery';
+import addUserQuery from '../../database/queries/users/addUserQuery';
 
 const signupController = (req, res, next) => {
   const { email, username, password } = req.body;
 
   signupSchema.validateAsync({ email, username, password })
     .then(() => {
-      User.findOne({ email });
+      getUserByEmailQuery(email);
     })
     .then((user) => {
       if (user) {
@@ -19,7 +20,7 @@ const signupController = (req, res, next) => {
     .then(() => bcrypt.hash(password, 10))
     .then((hashedPass) => ({ email, password: hashedPass, username }))
     .then((user) => {
-      User.create(user);
+      addUserQuery(user);
     })
     .then((data) => {
       req.user = data;
