@@ -3,8 +3,8 @@ import {
   getCartItems,
   addToCart,
   removeFromCart,
-} from '../controllers/cart/cart';
-import getSearchProducts from '../controllers/getSearchProducts.js';
+} from '../controllers/cart/cart.js';
+import getSearchProducts from '../controllers/search/getSearchProducts.js';
 
 const router = express.Router();
 

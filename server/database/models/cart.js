@@ -34,4 +34,4 @@ const CartItems = () => {
   });
 };
 
-module.exports = CartItems;
+export default CartItems;
