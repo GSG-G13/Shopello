@@ -5,16 +5,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import App from './App';
 import SingIn from './components/Account/SingIn';
 import SingUp from './components/Account/SingUp';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import Home from './pages/home/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Home />,
   },
   {
     path: '/sining',
@@ -26,42 +24,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-root.render(
-import Cart from './components/Cart/Cart';
-import Header from './components/header/Header';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Header />,
-    // errorElement: <ErrorPage />,
-    // children: [
-    //   {
-    //     path: "",
-    //     element: < />,
-    //   },
-    // ],
-  },
-  {
-    path: '/Cart',
-    element: <Cart />,
-    // errorElement: <ErrorPage />,
-  },
-  {
-    path: '/Signup',
-    element: 'signup page',
-    // errorElement: <ErrorPage />,
-  },
-  {
-    path: '/login',
-    element: 'login page',
-    // errorElement: <ErrorPage />,
-  },
-
-]);
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <RouterProvider router={router} />,
 );

@@ -1,4 +1,4 @@
-import customError from '../../utils/helper';
+import customError from '../../utils/helper/index.js';
 
 import { CartItems } from '../../database/models';
 
