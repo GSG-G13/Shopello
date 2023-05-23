@@ -15,4 +15,6 @@ router.get('/cart', getCartItems);
 router.post('/addToCart/:itemId', addToCart);
 router.delete('/cart/:itemId', removeFromCart);
 
+router.get("/getCategories", getCategories);
+
 export default router;

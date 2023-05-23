@@ -1,15 +1,15 @@
 import React from 'react';
-import { WrapTags } from './Filter.styles';
+import { WrapTags, Tags, TagsListItem } from './Filter.styles';
 
 function Filter(props) {
   const { categories } = props || [];
   return (
     <WrapTags>
-      <ul>
+      <Tags>
         {categories?.map((category) => (
-          <li>{category}</li>
+          <TagsListItem>{category}</TagsListItem>
         ))}
-      </ul>
+      </Tags>
     </WrapTags>
   );
 }
