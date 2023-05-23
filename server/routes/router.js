@@ -1,20 +1,24 @@
 import express from 'express';
+// import getSearchProducts from './../controllers/search/getSearchProducts';
 import {
-  getCartItems,
+  getProductFromCart,
   addToCart,
   removeFromCart,
+  updateCart,
+  clearCart,
 } from '../controllers/cart/cart.js';
-import getSearchProducts from '../controllers/search/getSearchProducts.js';
 
 const router = express.Router();
 
-router.post('/search/:product', getSearchProducts);
+// router.post('/search/:product', getSearchProducts);
 
 // Cart Routes
-router.get('/cart', getCartItems);
-router.post('/addToCart/:itemId', addToCart);
-router.delete('/cart/:itemId', removeFromCart);
+router.get('/cart/:userID/:productID', getProductFromCart);
+router.post('/cart', addToCart);
+router.delete('/cart/:userID/:productID', removeFromCart);
+router.put('/cart', updateCart);
+router.delete('/cart/:userID', clearCart);
 
-router.get("/getCategories", getCategories);
+// router.get("/getCategories", getCategories);
 
 export default router;

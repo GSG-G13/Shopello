@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
+import Swal from 'sweetalert2';
 import Empty from './Empty';
+
 import {
-  CartItem, CartContainer, CartItemPrice, CartItemTitle, CartTitle,
+  CartItem, CartContainer, CartItemPrice, CartItemTitle, CartTitle, RemoveButton,
 } from './Style.css';
 
 function Cart() {
@@ -12,28 +13,66 @@ function Cart() {
     fetch('/cart')
       .then((response) => response.json())
       .then((data) => setCartItems(data))
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'An error occurred',
+          text: error.message,
+        });
+      });
   }, []);
 
   const handleRemoveFromCart = (itemId) => {
-    fetch(`/cart/${itemId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log('Item removed from cart');
-          fetch('/cart')
-            .then((response) => response.json())
-            .then(() => setCartItems(data))
-            .catch((error) => console.error(error));
-        } else {
-          console.error('Failed to remove item from cart');
-        }
-      })
-      .catch((error) => console.error(error));
+    Swal.fire({
+      icon: 'question',
+      title: 'Confirmation',
+      text: 'Are you sure you want to remove this item from the cart?',
+      showCancelButton: true,
+      confirmButtonText: 'Remove',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`/cart/${itemId}`, {
+          method: 'DELETE',
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Item removed from cart',
+              });
+              fetch('/cart')
+                .then((response) => response.json())
+                .then(() => setCartItems(data))
+                .catch((error) => {
+                  console.error(error);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'An error occurred',
+                    text: error.message,
+                  });
+                });
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Failed to remove item from cart',
+              });
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'An error occurred',
+              text: error.message,
+            });
+          });
+      }
+    });
   };
-
   return (
     <CartContainer>
       <CartTitle>Cart</CartTitle>
@@ -48,7 +87,11 @@ function Cart() {
                 Price:
                 {item.price}
               </CartItemPrice>
-              <RemoveButton onClick={() => handleRemoveFromCart(item.id)}>Remove from Cart</RemoveButton>
+              <RemoveButton
+                onClick={() => handleRemoveFromCart(item.id)}
+              >
+                Remove from Cart
+              </RemoveButton>
             </CartItem>
           ))}
         </ul>
