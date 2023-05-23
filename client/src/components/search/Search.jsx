@@ -3,14 +3,14 @@ import { Wrapper, Icon, Input } from './Search.styles';
 
 function Search() {
   const [product, setProduct] = useState('');
-  useEffect(() => {
-    fetch(`/search/${product}`)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => alert(error));
+  // useEffect(() => {
+  //   fetch(`/search/${product}`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => alert(error));
 
-    return () => setProduct('');
-  }, [product]);
+  //   return () => setProduct('');
+  // }, [product]);
   return (
     <Wrapper>
       <Icon>
