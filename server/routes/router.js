@@ -9,6 +9,8 @@ import {
 
 const router = express.Router();
 
+router.post('/search/:product', getSearchProducts);
+
 // Cart Routes
 router.get('/cart/:userID/:productID', getProductFromCart);
 router.post('/cart', addToCart);
