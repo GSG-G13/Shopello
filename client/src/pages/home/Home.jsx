@@ -1,6 +1,7 @@
+/* eslint-disable import/extensions */
 import React from 'react';
-import Header from '../../components/header/Header';
-import Search from '../../components/search/Search';
+import Header from '../../components/header/Header.jsx';
+import Search from '../../components/search/Search.jsx';
 
 function Home() {
   return (
