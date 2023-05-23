@@ -1,4 +1,5 @@
 import express from 'express';
+// eslint-disable-next-line import/extensions
 import db from './database/config/connection.js';
 
 import router from './routes/router.js';
