@@ -9,6 +9,7 @@ import {
 import SingIn from './components/account/SingIn.jsx';
 import SingUp from './components/account/SingUp.jsx';
 import Home from './pages/home/Home.jsx';
+import Details from './components/details/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/singup',
     element: <SingUp />,
+  },
+  {
+    path: '/d',
+    element: <Details />,
   },
 ]);
 
