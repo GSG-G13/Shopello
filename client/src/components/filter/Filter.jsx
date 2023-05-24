@@ -6,8 +6,9 @@ function Filter(props) {
   return (
     <WrapTags>
       <Tags>
-        {categories?.map((category) => (
-          <TagsListItem>{category}</TagsListItem>
+        {categories?.map((category, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <TagsListItem key={index}>{category}</TagsListItem>
         ))}
       </Tags>
     </WrapTags>

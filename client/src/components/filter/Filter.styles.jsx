@@ -17,7 +17,6 @@ export const Tags = styled.ul`
   overflow-x: auto;
   position: relative;
   cursor: pointer;
-  
   @media only screen and (min-width: 650px) {
     margin-top: 15px;
     height: 50px;
@@ -35,6 +34,9 @@ export const TagsListItem = styled.li`
   text-align: center;
   padding: 0px 20px;
   border-radius: 20px;
+  user-select: none;
+  height: 40px;
+  background-color: #ece9f6;
 
   &:nth-last-of-type(4) {
     background-color: #fff6ed;
@@ -58,29 +60,3 @@ export const TagsListItem = styled.li`
     font-family: "Gilroy-Bold";
   }
 `;
-
-// const Tag = styled.div`
-//   background-color: #F8F8F8;
-//   border-radius: 99998px;
-
-//   padding: 0.5rem 1rem;
-//   margin: 0.5rem;
-//   cursor: pointer;
-//   transition: all 0.3s ease-in-out;
-
-//   &:hover {
-//     background-color: #E8E8E8;
-//   }
-// `;
-
-// export const wrapFilter = styled.div`
-//   width: 90%;
-//   max-width: 500px;
-//   margin: 1rem auto;
-//   background-color: #F8F8F8;
-//   border-radius: 99998px;
-//   overflow: hidden;
-//   height: 40px;
-//   position: relative;
-//   line-height: 40px;
-// `;

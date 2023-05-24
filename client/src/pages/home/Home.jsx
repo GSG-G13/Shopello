@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../../components/header/Header';
 import Search from '../../components/search/Search';
 import Filter from '../../components/filter/Filter';
+import PopularSection from '../../components/PopularSection/PopularSection';
 
 function Home() {
   const [categories, setCategories] = useState([]);
@@ -16,6 +17,7 @@ function Home() {
       <Header />
       <Search />
       <Filter categories={categories} />
+      <PopularSection />
     </div>
   );
 }
