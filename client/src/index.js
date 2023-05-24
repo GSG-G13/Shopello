@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     element: <SingUp />,
   },
   {
-    path: '/d',
+    path: '/detils',
     element: <Details />,
   },
 ]);
