@@ -7,10 +7,13 @@ import {
   updateCart,
   clearCart,
 } from '../controllers/cart/cart.js';
+import getSearchProducts from '../controllers/search/getSearchProducts.js';
 
 const router = express.Router();
 
-// router.post('/search/:product', getSearchProducts);
+// router.get('/', (req, res) => res.send('hello'));
+
+router.get('/search/:product', getSearchProducts);
 
 // Cart Routes
 router.get('/cart/:userID/:productID', getProductFromCart);
