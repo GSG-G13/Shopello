@@ -8,6 +8,8 @@ import {
   clearCart,
 } from '../controllers/cart/cart.js';
 import getSearchProducts from '../controllers/search/getSearchProducts.js';
+import signupController from '../controllers/user/signup.js';
+import login from '../controllers/user/login.js';
 
 const router = express.Router();
 
@@ -21,5 +23,7 @@ router.post('/cart', addToCart);
 router.delete('/cart/:userID/:productID', removeFromCart);
 router.put('/cart', updateCart);
 router.delete('/cart/:userID', clearCart);
+router.post('/singup', signupController);
+router.post('/login', login);
 
 export default router;

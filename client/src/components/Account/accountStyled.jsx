@@ -41,6 +41,7 @@ export const Bth = styled.button`
   height: 50px;
   border: #2CB674;
   color: #FFFFFF;
+  cursor: pointer;
 `;
 export const Body = styled.div`
   width: 400px;

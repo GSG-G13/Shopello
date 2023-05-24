@@ -1,22 +1,27 @@
-import { compare } from 'bcrypt';
-import { loginSchema } from '../../utils/validation';
-import { signToken } from '../../utils/jwt';
-import customError from '../../utils/helper';
-import { getUserByEmailQuery } from '../../database/queries';
+/* eslint-disable consistent-return */
+import bcrypt from 'bcrypt';
+import { loginSchema } from '../../utils/validation/index.js';
+import { signToken } from '../../utils/jwt/index.js';
+import customError from '../../utils/helper/index.js';
+import { getUserByEmailQuery } from '../../database/queries/index.js';
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
+  // console.log(email, password);
   loginSchema.validateAsync({ email, password })
     .then(() => getUserByEmailQuery(email))
     .then((user) => {
-      if (!user) {
-        throw customError(404, { message: 'User not found' });
+      console.log(user.rows[0], 'user');
+      // eslint-disable-next-line prefer-destructuring
+      req.user = user.rows[0];
+      if (!user.rows[0]) {
+        return customError(404, 'User not found');
       }
-      return compare(password, user.password);
+      return bcrypt.compare(password, user.rows[0].password);
     })
     .then((isMatch) => {
       if (!isMatch) {
-        throw customError(400, { message: 'Password is incorrect' });
+        throw customError(400, 'Password is incorrect');
       }
       return signToken(req.user);
     })
