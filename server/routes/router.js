@@ -1,5 +1,5 @@
 import express from 'express';
-// import getSearchProducts from './../controllers/search/getSearchProducts';
+
 import {
   getProductFromCart,
   addToCart,
