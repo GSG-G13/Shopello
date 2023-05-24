@@ -11,7 +11,6 @@ const login = (req, res, next) => {
   loginSchema.validateAsync({ email, password })
     .then(() => getUserByEmailQuery(email))
     .then((user) => {
-      console.log(user.rows[0], 'user');
       // eslint-disable-next-line prefer-destructuring
       req.user = user.rows[0];
       if (!user.rows[0]) {
