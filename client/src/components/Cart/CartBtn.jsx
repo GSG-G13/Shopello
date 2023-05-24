@@ -1,16 +1,20 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { Button } from './Style.css';
 
-function AddToCart({ itemId }) {
+function AddToCart({ userId, productId }) {
   const handleAddToCart = () => {
-    fetch(`/cart/${itemId}`, {
+    fetch(`/addCart/${userId}/${productId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ itemId }),
+      body: JSON.stringify({ productId }),
+
+      quantity: 1,
+
     })
       .then((response) => response.json())
       .then((data) => {
@@ -42,7 +46,7 @@ function AddToCart({ itemId }) {
 }
 
 AddToCart.propTypes = {
-  itemId: PropTypes.number.isRequired,
+  productId: PropTypes.number.isRequired,
 };
 
 export default AddToCart;
