@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Browse &amp; discover millions of products find the best seller. We ship to over 100 international destinations, right to your doorstep.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
