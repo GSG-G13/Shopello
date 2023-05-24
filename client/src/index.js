@@ -1,5 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -8,9 +9,10 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Cart from './components/Cart/Cart.jsx';
-import SingIn from './components/Account/SingIn.jsx';
-import SingUp from './components/Account/SingUp.jsx';
+import SingIn from './components/account/SingIn.jsx';
+import SingUp from './components/account/SingUp.jsx';
 import Home from './pages/home/Home.jsx';
+import Details from './components/details/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: '/cart',
     element: <Cart userId="1" />,
+  },
+  {
+    path: '/detils',
+    element: <Details />,
   },
 ]);
 
