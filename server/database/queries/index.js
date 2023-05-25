@@ -1,5 +1,6 @@
 import getProductsQuery from './products/getProductsQuery.js';
 import getProductsByCategoryQuery from './products/getProductsByCategoryQuery.js';
+import getCategoriesQuery from './products/getCategoriesQuery.js';
 import getUserByEmailQuery from './users/getUserByEmailQuery.js';
 import addUserQuery from './users/addUserQuery.js';
 import addToCartQuery from './cart/addToCartQuery.js';
@@ -18,4 +19,5 @@ export {
   getProductFromCartQuery,
   deleteAllFromCartQuery,
   updateCartQuery,
+  getCategoriesQuery,
 };
