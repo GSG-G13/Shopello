@@ -32,6 +32,7 @@ function Cart({ userId, productId }) {
         });
       });
   }, []);
+
   const clearCart = () => {
     Swal.fire({
       icon: 'question',
@@ -51,19 +52,9 @@ function Cart({ userId, productId }) {
             if (data.success) {
               Swal.fire({
                 icon: 'success',
-                title: 'your cart is now empty',
+                title: 'Your cart is now empty',
               });
-              fetch(`/cart/${userId}`)
-                .then((response) => response.json())
-                .then(() => setCartItems(data))
-                .catch((error) => {
-                  console.error(error);
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'An error occurred',
-                    text: error.message,
-                  });
-                });
+              setCartItems([]);
             } else {
               Swal.fire({
                 icon: 'error',
@@ -104,17 +95,7 @@ function Cart({ userId, productId }) {
                 icon: 'success',
                 title: 'Item removed from cart',
               });
-              fetch(`/cart/${userId}`)
-                .then((response) => response.json())
-                .then(() => setCartItems(data))
-                .catch((error) => {
-                  console.error(error);
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'An error occurred',
-                    text: error.message,
-                  });
-                });
+              setCartItems(cartItems.filter((item) => item.id !== productId));
             } else {
               Swal.fire({
                 icon: 'error',
@@ -143,12 +124,26 @@ function Cart({ userId, productId }) {
       body: JSON.stringify({ quantity }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data.message);
+      .then(() => {
+        const updatedCartItems = cartItems.map((item) => {
+          if (item.id === productId) {
+            return { ...item, quantity };
+          }
+          return item;
+        });
+        setCartItems(updatedCartItems);
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cartItems.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+    });
+    return totalPrice;
   };
 
   return (
@@ -167,30 +162,31 @@ function Cart({ userId, productId }) {
               <CartItemTitle>{item.name}</CartItemTitle>
               <CartItemPrice>
                 Price:
-                {item.price}
+                {item.price * item.quantity}
               </CartItemPrice>
+
               <CartItemCount>
-                <Button onClick={() => updateCartItemQuantity(userId, item.id, item.quantity + 1)}>
+                <Button onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>
                   +
                 </Button>
                 {item.quantity}
-                <Button onClick={() => updateCartItemQuantity(userId, item.id, item.quantity - 1)}>
+                <Button onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}>
                   -
                 </Button>
               </CartItemCount>
 
-              <RemoveButton
-                onClick={() => handleRemoveFromCart(item.id)}
-              >
+              <RemoveButton onClick={() => handleRemoveFromCart(item.id)}>
                 Remove from Cart
               </RemoveButton>
             </CartItem>
-
           ))}
-          <ClearButton onClick={clearCart(userId)}>Remove All</ClearButton>
+          <ClearButton onClick={clearCart}>Remove All</ClearButton>
+          <div>
+            Total Price:
+            {calculateTotalPrice()}
+          </div>
         </ul>
       )}
-
     </CartContainer>
   );
 }

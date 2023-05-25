@@ -18,7 +18,7 @@ const router = express.Router();
 router.get('/search/:product', getSearchProducts);
 
 router.get('/cart/:userId', getProductFromCart);
-router.post('/addCart/:userId/:productId', addToCart);
+router.post('/addCart', addToCart);
 router.delete('/rmCart/:userId/:productId', removeFromCart);
 router.put('/upCart/:userId/:productId', updateCart);
 router.delete('/clearCart/:userId', clearCart);

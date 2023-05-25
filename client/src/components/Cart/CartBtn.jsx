@@ -1,23 +1,25 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { Button } from './Style.css';
 
-function AddToCart({ userId, productId }) {
+const AddToCart = ({ userId, productId, quantity }) => {
+  const data = {
+    userId,
+    productId,
+    quantity,
+  };
+
   const handleAddToCart = () => {
-    fetch(`/addCart/${userId}/${productId}`, {
+    fetch('/addCart', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ productId }),
-
-      quantity: 1,
-
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         if (data.success) {
           Swal.fire({
             icon: 'success',
@@ -43,10 +45,6 @@ function AddToCart({ userId, productId }) {
   return (
     <Button onClick={handleAddToCart}>Add to Cart</Button>
   );
-}
-
-AddToCart.propTypes = {
-  productId: PropTypes.number.isRequired,
 };
 
 export default AddToCart;

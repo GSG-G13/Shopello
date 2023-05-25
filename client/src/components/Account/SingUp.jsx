@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import {
   Continuer, Title, Span, DivInput, Input, Bth, Body,
 } from './accountStyled';
@@ -8,6 +10,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const history = useHistory();
 
   const handleSignUp = () => {
     const dataSinUp = {
@@ -16,7 +19,7 @@ const SignUp = () => {
       username: name,
     };
 
-    fetch('http://localhost:4000/singup', {
+    fetch('http://localhost:4000/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,12 +28,26 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        window.localStorage.setItem('user', {
-          email: data.email,
-          username: data.username,
-        });
+        if (data.success) {
+          Swal.fire({
+            icon: 'success',
+            text: 'Sign up successful!',
+          });
+          history.push('/login');
+        } else {
+          Swal.fire({
+            icon: 'error',
+            text: 'Sign up failed. Please try again.',
+          });
+        }
       })
-      .catch((err) => console.log(err.details));
+      .catch((error) => {
+        Swal.fire({
+          icon: 'error',
+          text: 'An error occurred while signing up. Please try again later.',
+        });
+        console.error(error);
+      });
   };
 
   return (
@@ -80,7 +97,6 @@ const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
         </DivInput>
         <DivInput>
           <Bth type="submit" onClick={handleSignUp}>Get Started</Bth>

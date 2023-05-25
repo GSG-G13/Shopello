@@ -1,9 +1,9 @@
 import connection from '../../config/connection.js';
 
-const addToCartQuery = (userID, productID, quantity) => new Promise((resolve, reject) => {
+const addToCartQuery = (userId, productId, quantity) => new Promise((resolve, reject) => {
   connection.query(
-    'INSERT INTO CartItems (userID, productID, quantity) VALUES ($1, $2, $3)',
-    [userID, productID, quantity],
+    'INSERT INTO CartItems (userId, productId, quantity) VALUES ($1, $2, $3)',
+    [userId, productId, quantity],
     (err, results) => {
       if (err) {
         reject(err);
