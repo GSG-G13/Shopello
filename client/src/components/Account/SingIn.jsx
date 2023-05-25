@@ -10,7 +10,6 @@ const SingIn = () => {
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-    console.log('cheek');
     const data = {
       email,
       password,
