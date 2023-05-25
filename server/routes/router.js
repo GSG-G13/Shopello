@@ -18,12 +18,11 @@ const router = express.Router();
 
 router.get('/search/:product', getSearchProducts);
 
-// Cart Routes
-router.get('/cart/:userID/:productID', getProductFromCart);
-router.post('/cart', addToCart);
-router.delete('/cart/:userID/:productID', removeFromCart);
-router.put('/cart', updateCart);
-router.delete('/cart/:userID', clearCart);
+router.get('/cart/:userId', getProductFromCart);
+router.post('/addCart', addToCart);
+router.delete('/rmCart/:userId/:productId', removeFromCart);
+router.put('/upCart/:userId/:productId', updateCart);
+router.delete('/clearCart/:userId', clearCart);
 router.post('/singup', signupController);
 router.post('/login', login);
 

@@ -9,9 +9,9 @@ import {
 } from '../../database/queries/index.js';
 
 const getProductFromCart = (req, res, next) => {
-  const { userID, productID } = req.params;
+  const { userId } = req.params;
 
-  getProductFromCartQuery(userID, productID)
+  getProductFromCartQuery(userId)
     .then((results) => {
       res.json(results);
     })
@@ -21,9 +21,9 @@ const getProductFromCart = (req, res, next) => {
 };
 
 const addToCart = (req, res, next) => {
-  const { userID, productID, quantity } = req.body;
+  const { userId, productId, quantity } = req.body;
 
-  addToCartQuery(userID, productID, quantity)
+  addToCartQuery(userId, productId, quantity)
     .then(() => {
       res.json({
         success: true,
