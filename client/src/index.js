@@ -1,6 +1,5 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
-
 /* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SingUp />,
-  },
-  {
-    path: '/cart',
-    element: <Cart userId />,
   },
   {
     path: '/cart',

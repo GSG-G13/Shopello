@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {
   Continuer, Title, Span, DivInput, Input, Bth, Body,
@@ -10,7 +10,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
     const dataSinUp = {
@@ -33,7 +33,7 @@ const SignUp = () => {
             icon: 'success',
             text: 'Sign up successful!',
           });
-          history.push('/login');
+          navigate('/login');
         } else {
           Swal.fire({
             icon: 'error',

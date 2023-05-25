@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {
   Continuer, Title, Span, DivInput, Input, Bth, Body,
@@ -10,7 +10,7 @@ import image from '../../img/1.png';
 const SingIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
     const data = {
@@ -32,7 +32,7 @@ const SingIn = () => {
             icon: 'success',
             text: 'Login successful!',
           });
-          history.push('/');
+          navigate('/');
         } else {
           Swal.fire({
             icon: 'error',

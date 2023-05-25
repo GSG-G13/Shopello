@@ -25,7 +25,7 @@ const login = (req, res, next) => {
       return signToken(req.user);
     })
     .then((token) => {
-      res.cookie('token', token, { httpOnly: true });
+      res.cookie('token', { token}, { httpOnly: true });
       res.json({
         status: 200,
         message: 'Login successfully',
