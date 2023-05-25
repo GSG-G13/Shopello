@@ -1,5 +1,5 @@
 import express from 'express';
-// import getSearchProducts from './../controllers/search/getSearchProducts';
+
 import {
   getProductFromCart,
   addToCart,
@@ -7,6 +7,7 @@ import {
   updateCart,
   clearCart,
 } from '../controllers/cart/cart.js';
+
 import getSearchProducts from '../controllers/search/getSearchProducts.js';
 import signupController from '../controllers/user/signup.js';
 import login from '../controllers/user/login.js';
