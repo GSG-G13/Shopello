@@ -18,15 +18,15 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: '/sining',
+    path: '/login',
     element: <SingIn />,
   },
   {
-    path: '/singup',
+    path: '/signup',
     element: <SingUp />,
   },
   {
-    path: '/detils',
+    path: '/details',
     element: <Details />,
   },
 ]);
