@@ -4,6 +4,8 @@ import Search from '../../components/search/Search';
 import Filter from '../../components/filter/Filter';
 import PopularSection from '../../components/PopularSection/PopularSection';
 // import checkAuth from './../../../../server/middleware/checkAuth';
+/* eslint-disable import/extensions */
+import Slider from '../../components/recommended/Recommended.jsx';
 
 function Home() {
   const [categories, setCategories] = useState([]);
@@ -23,6 +25,7 @@ function Home() {
       <Search />
       <Filter categories={categories} />
       <PopularSection products={products} />
+      <Slider />
     </div>
   );
 }

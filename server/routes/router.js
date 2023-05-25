@@ -1,4 +1,5 @@
 import express from 'express';
+
 import {
   getProductFromCart,
   addToCart,
@@ -7,6 +8,7 @@ import {
   clearCart,
 } from '../controllers/cart/cart.js';
 import getCategories from '../controllers/filter/getCategories.js';
+
 import getSearchProducts from '../controllers/search/getSearchProducts.js';
 import signupController from '../controllers/user/signup.js';
 import login from '../controllers/user/login.js';
