@@ -11,32 +11,38 @@ import {
   PopularItem,
 } from './PopularSection.styles';
 
-const PopularSection = () => (
-  <WrapPopularSection>
-    <WrapHeading>
-      <img
-        src="https://gsg-fc03.github.io/shopello/assets/img/populore.svg"
-        alt="img"
-      />
-      <HeadingText>Popular</HeadingText>
-    </WrapHeading>
+const PopularSection = (props) => {
+  const { products } = props || [];
+  return (
+    <WrapPopularSection>
+      <WrapHeading>
+        <img
+          src="https://gsg-fc03.github.io/shopello/assets/img/populore.svg"
+          alt="img"
+        />
+        <HeadingText>Popular</HeadingText>
+      </WrapHeading>
 
-    <ListOfPopular>
-      <PopularItem>
-        <PopularImage src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
-        <WrapOfText>
-          <div>
-            <Title>title</Title>
-            <Price>$ 109.95</Price>
-          </div>
-          <img
-            src="https://gsg-fc03.github.io/shopello/assets/img/cart%20with%20plus.svg"
-            alt="img"
-            style={{ width: '50px' }}
-          />
-        </WrapOfText>
-      </PopularItem>
-    </ListOfPopular>
-  </WrapPopularSection>
-);
+      <ListOfPopular>
+        {products?.map((product) => (
+          <PopularItem key={product.id}>
+            <PopularImage src={product.image} />
+            <WrapOfText>
+              <div>
+                <Title>{product.name}</Title>
+                <Price>{product.price}</Price>
+              </div>
+              <img
+                src="https://gsg-fc03.github.io/shopello/assets/img/cart%20with%20plus.svg"
+                alt="img"
+                style={{ width: '50px' }}
+              />
+            </WrapOfText>
+          </PopularItem>
+        ))}
+      </ListOfPopular>
+    </WrapPopularSection>
+  );
+};
+
 export default PopularSection;

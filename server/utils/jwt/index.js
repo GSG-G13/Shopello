@@ -1,4 +1,4 @@
-import signToken from './signToken';
-import verifyToken from './verifyToken';
+import signToken from './signToken.js';
+import verifyToken from './verifyToken.js';
 
 export { signToken, verifyToken };

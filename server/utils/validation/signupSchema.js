@@ -6,7 +6,7 @@ const signupSchema = Joi.object({
     'string.empty': 'Email is required',
     'any.required': 'Email is required',
   }),
-  username: Joi.string().min(4).required().message({
+  username: Joi.string().min(4).required().messages({
     'string.min': 'Username must be at least 4 characters long',
     'string.empty': 'Username is required',
     'any.required': 'Username is required',

@@ -1,16 +1,8 @@
 import express from 'express';
-// eslint-disable-next-line import/extensions
+import cors from 'cors';
 import connection from './database/config/connection.js';
 
-/*
-  CURD operations are here
-*/
-
-// app.post('/api/user/login', ()=>{});
-// app.post('/api/user/singup', ()=>{});
-
-// const { User, CartItems } = require('./database/models/index');
-import { getProductsQuery } from './database/queries/index.js';
+// import { getProductsQuery } from './database/queries/index.js';
 
 import router from './routes/router.js';
 
@@ -18,17 +10,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  getProductsQuery()
-    .then((result) => res.send(result))
-    .catch((err) => console.log(err));
-});
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
-/*
-  CURD operations are here
-*/
+app.use(cors(corsOptions));
 
 app.use(router);
 

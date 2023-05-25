@@ -10,14 +10,13 @@ const SignUp = () => {
   const [name, setName] = useState('');
 
   const handleSignUp = () => {
-    console.log('cheek');
     const dataSinUp = {
       email,
       password,
-      name,
+      username: name,
     };
 
-    fetch('http://localhost:4000/signup', {
+    fetch('http://localhost:4000/singup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,8 +25,12 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-      });
+        window.localStorage.setItem('user', {
+          email: data.email,
+          username: data.username,
+        });
+      })
+      .catch((err) => console.log(err.details));
   };
 
   return (
@@ -43,9 +46,14 @@ const SignUp = () => {
           <Input
             type="text"
             placeholder="Enter Your FullName"
-            id="name"
+            id="Username"
+            name="Username"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+            min="5"
+            max="20"
+            typeof="text"
           />
         </DivInput>
         <DivInput>
@@ -54,8 +62,11 @@ const SignUp = () => {
             type="email"
             placeholder="Enter Your Email"
             id="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+            typeof="email"
           />
         </DivInput>
         <DivInput>
@@ -65,8 +76,11 @@ const SignUp = () => {
             placeholder="Enter Your Password"
             id="password"
             value={password}
+            name="password"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
+
         </DivInput>
         <DivInput>
           <Bth type="submit" onClick={handleSignUp}>Get Started</Bth>
