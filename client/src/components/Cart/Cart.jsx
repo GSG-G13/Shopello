@@ -17,22 +17,20 @@ import {
   GlobalStyle,
 } from './Style.css';
 
-function Cart({ userId, productId }) {
+function Cart({ productId }) {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    fetch(`/cart/${userId}`)
+    fetch('http://localhost:4000/cart')
       .then((response) => response.json())
-      .then((data) => setCartItems(data))
-      .catch((error) => {
+      .then((data) => setCartItems(data.rows))
+      .catch(() => {
         Swal.fire({
           icon: 'error',
           title: 'An error occurred',
-          text: error.message,
         });
       });
   }, []);
-
   const clearCart = () => {
     Swal.fire({
       icon: 'question',
@@ -44,7 +42,7 @@ function Cart({ userId, productId }) {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`/clearCart/${userId}`, {
+        fetch('/clearCart', {
           method: 'DELETE',
         })
           .then((response) => response.json())
@@ -85,7 +83,7 @@ function Cart({ userId, productId }) {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`/rmCart/${userId}/${productId}`, {
+        fetch(`/rmCart/${productId}`, {
           method: 'DELETE',
         })
           .then((response) => response.json())
@@ -116,7 +114,7 @@ function Cart({ userId, productId }) {
   };
 
   const updateCartItemQuantity = (quantity) => {
-    fetch(`/cart/${userId}/${productId}`, {
+    fetch(`/cart/${productId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

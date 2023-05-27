@@ -1,0 +1,27 @@
+.carousel {
+  
+margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 100px;
+}
+
+div .carousel-slide {
+  position: relative;
+  text-align: center;
+  margin-right: 10px;
+  
+}
+
+.carousel-slide img {
+  margin-bottom: 10px;
+  border-radius: 8px;  
+  max-height: 600px;
+  max-width: 100%;
+  transform: scale(1); 
+  transition: transform 1s ease-in-out;
+}
+
+
+.carousel-slide:hover img {
+  transform: scale(1.5); 
+}
