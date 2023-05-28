@@ -16,6 +16,9 @@ search by name:
 signup:
 
 <img src=".\client\src\img\4.PNG" alt="Alt text" title="Optional title">
+cart:
+<img src=".\client\src\img\5.PNG" alt="Alt text" title="Optional title">
+<img src=".\client\src\img\6.PNG" alt="Alt text" title="Optional title">
 ## Prerequisites 🗈
 
 Before running the project, ensure that you have the following installed:
