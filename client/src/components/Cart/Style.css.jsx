@@ -5,15 +5,13 @@ export const GlobalStyle = createGlobalStyle`
 
 `;
 export const CartContainer = styled.div`
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 20px;
+display:flex;
+gap: 300px;
 align-items:centre;
 `;
 
 export const CartTitle = styled.h1`
-
+justify-content:center;
 gap:10px;
 font-size:32px;
 font-weight: bold;
@@ -28,7 +26,7 @@ export const CartItem = styled.li`
 display: flex;
 flex-direction: column;
 align-items: center;
-width: 300px;
+width: 500px;
 padding: 20px;
 background-color: #f2f2f2;
 border-radius: 8px;
@@ -65,7 +63,7 @@ export const RemoveButton = styled.button`
 
 export const Button = styled.button`
 display:relative;
-  background-color: green;
+  background-color: #D0F0C0;
   height:25px;
   color: white;
   border: none;
@@ -87,7 +85,7 @@ export const EmptyImage = styled.img`
 `;
 
 export const Image = styled.img`
-width: 100%;
+width: 400px;
 height: 300px;
 margin-bottom: 10px;
 border-radius: 8px;

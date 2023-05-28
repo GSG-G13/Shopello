@@ -1,17 +1,24 @@
-import customError from '../../utils/helper/index.js';
-
-import {
+const customError = require('../../utils/helper/index.js');
+const {
   addToCartQuery,
   deleteFromCartQuery,
   getProductFromCartQuery,
   deleteAllFromCartQuery,
   updateCartQuery,
-} from '../../database/queries/index.js';
+  getProductsByIdQuery,
+} = require('../../database/queries/index.js');
 
 const getProductFromCart = (req, res, next) => {
-  const { userId } = req.params;
-
-  getProductFromCartQuery(userId)
+  getProductFromCartQuery()
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+const getProductFromId = (req, res, next) => {
+  getProductsByIdQuery()
     .then((results) => {
       res.json(results);
     })
@@ -21,9 +28,9 @@ const getProductFromCart = (req, res, next) => {
 };
 
 const addToCart = (req, res, next) => {
-  const { userId, productId, quantity } = req.body;
+  const { productId, quantity } = req.body;
 
-  addToCartQuery(userId, productId, quantity)
+  addToCartQuery(productId, quantity)
     .then(() => {
       res.json({
         success: true,
@@ -36,9 +43,9 @@ const addToCart = (req, res, next) => {
 };
 
 const removeFromCart = (req, res, next) => {
-  const { userID, productID } = req.params;
+  const { productID } = req.params;
 
-  deleteFromCartQuery(userID, productID)
+  deleteFromCartQuery(productID)
     .then((result) => {
       if (result.rowCount === 0) {
         throw customError(404, { message: 'Item not found in cart' });
@@ -53,9 +60,10 @@ const removeFromCart = (req, res, next) => {
       next(err);
     });
 };
+
 const updateCart = (req, res, next) => {
-  const { userId, productId, quantity } = req.body;
-  updateCartQuery(userId, productId, quantity)
+  const { productId, quantity } = req.body;
+  updateCartQuery(productId, quantity)
     .then((result) => {
       if (result.rowCount === 0) {
         throw customError(404, { message: 'Item not found in cart' });
@@ -70,10 +78,9 @@ const updateCart = (req, res, next) => {
       next(err);
     });
 };
-const clearCart = (req, res, next) => {
-  const { userID } = req.params;
 
-  deleteAllFromCartQuery(userID)
+const clearCart = (req, res, next) => {
+  deleteAllFromCartQuery()
     .then((results) => {
       if (results.rowCount === 0) {
         throw customError(404, { message: 'No items found in cart' });
@@ -89,10 +96,11 @@ const clearCart = (req, res, next) => {
     });
 };
 
-export {
+module.exports = {
   getProductFromCart,
   addToCart,
   removeFromCart,
   updateCart,
   clearCart,
+  getProductFromId,
 };

@@ -1,3 +1,3 @@
-import customError from './customError.js';
+const customError = require('./customError.js');
 
-export default customError;
+module.exports = customError;

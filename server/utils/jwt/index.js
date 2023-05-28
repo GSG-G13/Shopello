@@ -1,4 +1,4 @@
-import signToken from './signToken.js';
-import verifyToken from './verifyToken.js';
+const signToken = require('./signToken');
+const verifyToken = require('./verifyToken');
 
-export { signToken, verifyToken };
+module.exports = { signToken, verifyToken };

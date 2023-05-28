@@ -1,15 +1,14 @@
-import express from 'express';
-import cors from 'cors';
-// eslint-disable-next-line import/extensions
-import connection from './database/config/connection.js';
+const express = require('express');
+const cors = require('cors');
+const connection = require('./database/config/connection.js');
 
 /*
   CURD operations are here
 */
 
-import { getProductsQuery } from './database/queries/index.js';
+const { getProductsQuery } = require('./database/queries/index.js');
 
-import router from './routes/router.js';
+const router = require('./routes/router.js');
 
 const app = express();
 app.use(express.json());
@@ -38,12 +37,10 @@ app.use(router);
 
 connection.connect((err) => {
   if (err) {
-    // eslint-disable-next-line no-console
     console.log(err);
   } else {
-    // eslint-disable-next-line no-console
     console.log('connected to the db');
   }
 });
 
-export default app;
+module.exports = app;

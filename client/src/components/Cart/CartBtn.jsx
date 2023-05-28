@@ -3,15 +3,14 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import { Button } from './Style.css';
 
-const AddToCart = ({ userId, productId, quantity }) => {
+const AddToCart = ({ productId }) => {
   const data = {
-    userId,
     productId,
-    quantity,
+    quantity: 1,
   };
 
   const handleAddToCart = () => {
-    fetch('/addCart', {
+    fetch('http://localhost:4000/addCart', { // Remove the extra forward slash
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,8 +18,8 @@ const AddToCart = ({ userId, productId, quantity }) => {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then(() => {
-        if (data.success) {
+      .then((responseData) => { // Access the response data
+        if (responseData.success) { // Use responseData instead of data
           Swal.fire({
             icon: 'success',
             title: 'Product added to cart',
@@ -37,7 +36,6 @@ const AddToCart = ({ userId, productId, quantity }) => {
         Swal.fire({
           icon: 'error',
           title: 'An error occurred',
-          text: error.message,
         });
       });
   };

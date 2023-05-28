@@ -1,4 +1,4 @@
-import searchProducts from '../../database/queries/products/searchProducts.js';
+const searchProducts = require('../../database/queries/products/searchProducts.js');
 
 const getSearchProducts = async (req, res) => {
   try {
@@ -20,4 +20,4 @@ const getSearchProducts = async (req, res) => {
   }
 };
 
-export default getSearchProducts;
+module.exports = getSearchProducts;

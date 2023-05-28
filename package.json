@@ -2,9 +2,8 @@
   "name": "shopello",
   "version": "1.0.0",
   "description": "Browse &amp; discover millions of products find the best seller. We ship to over 100 international destinations, right to your doorstep.",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
+  "main": "index.js",  "scripts": {
+    "start": "cd ./server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,4 +1,4 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
 const addUserQuery = ({ username, email, password }) => new Promise((resolve, reject) => {
   connection.query(
@@ -13,4 +13,4 @@ const addUserQuery = ({ username, email, password }) => new Promise((resolve, re
   );
 });
 
-export default addUserQuery;
+module.exports = addUserQuery;

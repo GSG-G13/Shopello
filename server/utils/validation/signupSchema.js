@@ -1,4 +1,4 @@
-import Joi from 'joi';
+const Joi = require('joi');
 
 const signupSchema = Joi.object({
   email: Joi.string().email().required().messages({
@@ -18,4 +18,4 @@ const signupSchema = Joi.object({
   }),
 });
 
-export default signupSchema;
+module.exports = signupSchema;

@@ -1,14 +1,15 @@
-import getProductsQuery from './products/getProductsQuery.js';
-import getProductsByCategoryQuery from './products/getProductsByCategoryQuery.js';
-import getUserByEmailQuery from './users/getUserByEmailQuery.js';
-import addUserQuery from './users/addUserQuery.js';
-import addToCartQuery from './cart/addToCartQuery.js';
-import deleteFromCartQuery from './cart/deleteFromCartQuery.js';
-import getProductFromCartQuery from './cart/getProductFromCartQuery.js';
-import deleteAllFromCartQuery from './cart/deleteAllFromCartQuery.js';
-import updateCartQuery from './cart/updateCartQuery.js';
+const getProductsQuery = require('./products/getProductsQuery.js');
+const getProductsByCategoryQuery = require('./products/getProductsByCategoryQuery.js');
+const getUserByEmailQuery = require('./users/getUserByEmailQuery.js');
+const addUserQuery = require('./users/addUserQuery.js');
+const addToCartQuery = require('./cart/addToCartQuery.js');
+const deleteFromCartQuery = require('./cart/deleteFromCartQuery.js');
+const getProductFromCartQuery = require('./cart/getProductFromCartQuery.js');
+const deleteAllFromCartQuery = require('./cart/deleteAllFromCartQuery.js');
+const updateCartQuery = require('./cart/updateCartQuery.js');
+const getProductsByIdQuery = require('./products/getProductbyId.js');
 
-export {
+module.exports = {
   getProductsQuery,
   getProductsByCategoryQuery,
   getUserByEmailQuery,
@@ -18,4 +19,5 @@ export {
   getProductFromCartQuery,
   deleteAllFromCartQuery,
   updateCartQuery,
+  getProductsByIdQuery,
 };

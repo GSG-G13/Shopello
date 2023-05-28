@@ -7,7 +7,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import SearchedItem from '../searchedItem/SearchedItem';
 import './styled.css';
 
-const Slider = () => {
+const Recommended = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -17,7 +17,7 @@ const Slider = () => {
   useEffect(() => {
     fetch('http://localhost:4000/products')
       .then((res) => res.json())
-      .then((data) => setProducts(data.data.products))
+      .then((data) => setProducts(data))
       .catch((error) => console.log(error));
   }, []);
 
@@ -68,4 +68,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default Recommended;

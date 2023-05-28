@@ -1,9 +1,9 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
-const addToCartQuery = (userId, productId, quantity) => new Promise((resolve, reject) => {
+const addToCartQuery = (productId, quantity) => new Promise((resolve, reject) => {
   connection.query(
-    'INSERT INTO CartItems (userId, productId, quantity) VALUES ($1, $2, $3)',
-    [userId, productId, quantity],
+    'INSERT INTO CartItems (productId, quantity) VALUES ($1, $2)',
+    [productId, quantity],
     (err, results) => {
       if (err) {
         reject(err);
@@ -13,4 +13,4 @@ const addToCartQuery = (userId, productId, quantity) => new Promise((resolve, re
   );
 });
 
-export default addToCartQuery;
+module.exports = addToCartQuery;

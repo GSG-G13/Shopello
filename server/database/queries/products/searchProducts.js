@@ -1,4 +1,4 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
 const searchProducts = (product) => new Promise((resolve, reject) => {
   connection.query('SELECT * FROM Products WHERE name LIKE $1', [`%${product}%`], (error, results) => {
@@ -10,4 +10,4 @@ const searchProducts = (product) => new Promise((resolve, reject) => {
   });
 });
 
-export default searchProducts;
+module.exports = searchProducts;

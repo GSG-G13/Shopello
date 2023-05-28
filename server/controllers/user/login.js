@@ -1,9 +1,8 @@
-/* eslint-disable consistent-return */
-import bcrypt from 'bcrypt';
-import { loginSchema } from '../../utils/validation/index.js';
-import { signToken } from '../../utils/jwt/index.js';
-import customError from '../../utils/helper/index.js';
-import { getUserByEmailQuery } from '../../database/queries/index.js';
+const bcrypt = require('bcrypt');
+const { loginSchema } = require('../../utils/validation/index.js');
+const { signToken } = require('../../utils/jwt/index.js');
+const customError = require('../../utils/helper/index.js');
+const { getUserByEmailQuery } = require('../../database/queries/index.js');
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
@@ -25,7 +24,7 @@ const login = (req, res, next) => {
       return signToken(req.user);
     })
     .then((token) => {
-      res.cookie('token', { token}, { httpOnly: true });
+      res.cookie('token', { token }, { httpOnly: true });
       res.json({
         status: 200,
         message: 'Login successfully',
@@ -36,4 +35,4 @@ const login = (req, res, next) => {
     });
 };
 
-export default login;
+module.exports = login;

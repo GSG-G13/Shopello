@@ -1,9 +1,9 @@
 const connection = require('../../config/connection.js');
 
-const deleteFromCartQuery = (productId) => new Promise((resolve, reject) => {
+const getProductsByIdQuery = (id) => new Promise((resolve, reject) => {
   connection.query(
-    'DELETE FROM CartItems WHERE productID = $1',
-    [productId],
+    'SELECT * FROM Products WHERE id = $1',
+    [id],
     (err, results) => {
       if (err) {
         reject(err);
@@ -13,4 +13,4 @@ const deleteFromCartQuery = (productId) => new Promise((resolve, reject) => {
   );
 });
 
-module.exports = deleteFromCartQuery;
+module.exports = getProductsByIdQuery;

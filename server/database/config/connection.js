@@ -1,5 +1,5 @@
-import pg from 'pg';
-import {} from 'dotenv/config';
+const pg = require('pg');
+require('dotenv/config');
 
 const { Pool } = pg;
 
@@ -8,4 +8,4 @@ const connection = new Pool({
   ssl: false,
 });
 
-export default connection;
+module.exports = connection;

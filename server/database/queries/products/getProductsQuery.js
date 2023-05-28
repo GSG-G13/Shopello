@@ -1,13 +1,5 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection');
 
-const getProductsQuery = () => new Promise((resolve, reject) => {
-  connection.query('SELECT * FROM Products', (error, results) => {
-    if (error) {
-      reject(error);
-    } else {
-      resolve(results.rows);
-    }
-  });
-});
+const getProductsQuery = () => connection.query('select * from products');
 
-export default getProductsQuery;
+module.exports = getProductsQuery;

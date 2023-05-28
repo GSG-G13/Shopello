@@ -1,4 +1,4 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
 const getCategoriesQuery = () => new Promise((resolve, reject) => {
   connection.query(
@@ -13,4 +13,4 @@ const getCategoriesQuery = () => new Promise((resolve, reject) => {
   );
 });
 
-export default getCategoriesQuery;
+module.exports = getCategoriesQuery;
