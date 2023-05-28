@@ -65,7 +65,7 @@ export const RemoveButton = styled.button`
 
 export const Button = styled.button`
 display:relative;
-  background-color: green;
+  background-color: #D0F0C0;
   height:25px;
   color: white;
   border: none;
