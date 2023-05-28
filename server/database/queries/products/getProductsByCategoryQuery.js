@@ -1,4 +1,4 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
 const getProductsByCategoryQuery = (category) => new Promise((resolve, reject) => {
   connection.query(
@@ -13,4 +13,4 @@ const getProductsByCategoryQuery = (category) => new Promise((resolve, reject) =
   );
 });
 
-export default getProductsByCategoryQuery;
+module.exports = getProductsByCategoryQuery;

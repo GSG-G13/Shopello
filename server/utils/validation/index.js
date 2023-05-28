@@ -1,4 +1,4 @@
-import loginSchema from './loginSchema.js';
-import signupSchema from './signupSchema.js';
+const loginSchema = require('./loginSchema.js');
+const signupSchema = require('./signupSchema.js');
 
-export { loginSchema, signupSchema };
+module.exports = { loginSchema, signupSchema };

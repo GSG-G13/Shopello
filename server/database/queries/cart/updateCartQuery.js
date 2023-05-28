@@ -1,16 +1,16 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
-const updateCartQuery = (userId, productId, quantity) => {
+const updateCartQuery = (productId, quantity) => {
   const query = `
     UPDATE cart
     SET quantity = $1
-    WHERE user_id = $2 AND product_id = $3
+    WHERE productId = $2
     RETURNING *;
   `;
 
-  const values = [quantity, userId, productId];
+  const values = [quantity, productId];
 
   return connection.query(query, values);
 };
 
-export default updateCartQuery;
+module.exports = updateCartQuery;

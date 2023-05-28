@@ -1,5 +1,5 @@
-import Jwt from 'jsonwebtoken';
-import {} from 'dotenv/config';
+const Jwt = require('jsonwebtoken');
+require('dotenv/config');
 
 const signToken = (user) => {
   const payload = {
@@ -17,4 +17,4 @@ const signToken = (user) => {
   });
 };
 
-export default signToken;
+module.exports = signToken;

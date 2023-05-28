@@ -1,29 +1,33 @@
-import express from 'express';
+const express = require('express');
 
-import {
+const {
   getProductFromCart,
   addToCart,
   removeFromCart,
   updateCart,
   clearCart,
-} from '../controllers/cart/cart.js';
+} = require('../controllers/cart/cart');
 
-import getSearchProducts from '../controllers/search/getSearchProducts.js';
-import signupController from '../controllers/user/signup.js';
-import login from '../controllers/user/login.js';
+const getSearchProducts = require('../controllers/search/getSearchProducts');
+const signupController = require('../controllers/user/signup');
+const login = require('../controllers/user/login');
+const { getProducts } = require('../controllers/index');
+const { getProductFromId } = require('../controllers/cart/cart');
 
 const router = express.Router();
 
 // router.get('/', (req, res) => res.send('hello'));
-
+router.get('/products', getProducts);
 router.get('/search/:product', getSearchProducts);
 
-router.get('/cart/:userId', getProductFromCart);
-router.post('/addCart', addToCart);
-router.delete('/rmCart/:userId/:productId', removeFromCart);
-router.put('/upCart/:userId/:productId', updateCart);
-router.delete('/clearCart/:userId', clearCart);
-router.post('/singup', signupController);
+router.get('/cart', getProductFromCart);
+router.get('/product/:productId', getProductFromId);
+
+router.use('/addCart', addToCart);
+router.delete('/rmCart/:productId', removeFromCart);
+router.put('/upCart/:productId', updateCart);
+router.delete('/clearCart', clearCart);
+router.post('/signup', signupController);
 router.post('/login', login);
 
-export default router;
+module.exports = router;

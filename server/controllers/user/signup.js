@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
-import customError from '../../utils/helper/index.js';
-import { signToken } from '../../utils/jwt/index.js';
-import { signupSchema } from '../../utils/validation/index.js';
-import getUserByEmailQuery from '../../database/queries/users/getUserByEmailQuery.js';
-import addUserQuery from '../../database/queries/users/addUserQuery.js';
+const bcrypt = require('bcrypt');
+const customError = require('../../utils/helper/index.js');
+const { signToken } = require('../../utils/jwt/index.js');
+const { signupSchema } = require('../../utils/validation/index.js');
+const getUserByEmailQuery = require('../../database/queries/users/getUserByEmailQuery.js');
+const addUserQuery = require('../../database/queries/users/addUserQuery.js');
 
 const signupController = (req, res, next) => {
   const { email, username, password } = req.body;
@@ -38,4 +38,4 @@ const signupController = (req, res, next) => {
     });
 };
 
-export default signupController;
+module.exports = signupController;

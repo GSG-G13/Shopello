@@ -1,4 +1,4 @@
-import { verifyToken } from '../utils/jwt';
+const { verifyToken } = require('../utils/jwt');
 
 const checkAuth = (req, res, next) => {
   const { token } = req.cookies;
@@ -19,4 +19,4 @@ const checkAuth = (req, res, next) => {
     });
 };
 
-export default checkAuth;
+module.exports = checkAuth;

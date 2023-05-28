@@ -1,9 +1,8 @@
-import connection from '../../config/connection.js';
+const connection = require('../../config/connection.js');
 
-const deleteAllFromCartQuery = (userID) => new Promise((resolve, reject) => {
+const deleteAllFromCartQuery = () => new Promise((resolve, reject) => {
   connection.query(
-    'DELETE FROM CartItems WHERE userID = $1',
-    [userID],
+    'DELETE * FROM CartItems',
     (err, results) => {
       if (err) {
         reject(err);
@@ -13,4 +12,4 @@ const deleteAllFromCartQuery = (userID) => new Promise((resolve, reject) => {
   );
 });
 
-export default deleteAllFromCartQuery;
+module.exports = deleteAllFromCartQuery;

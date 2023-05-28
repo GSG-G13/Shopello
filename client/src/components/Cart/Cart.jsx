@@ -22,7 +22,8 @@ function Cart({ productId }) {
 
   useEffect(() => {
     fetch('http://localhost:4000/cart')
-      .then((response) => response.json())
+      .then((response) => response.json()
+        .then(console.log(response)))
       .then((data) => setCartItems(data.rows))
       .catch(() => {
         Swal.fire({
@@ -156,11 +157,11 @@ function Cart({ productId }) {
         <ul>
           {cartItems.map((item) => (
             <CartItem key={item.id}>
-              <Image src={item.Image} />
+              <Image src={item.image} />
               <CartItemTitle>{item.name}</CartItemTitle>
               <CartItemPrice>
-                Price:
-                {item.price * item.quantity}
+                Price: $
+                {item.price }
               </CartItemPrice>
 
               <CartItemCount>

@@ -1,4 +1,4 @@
-import { verifyToken } from '../utils/jwt';
+const { verifyToken } = require('../utils/jwt');
 
 const isLogged = (req, res, next) => {
   const { token } = req.cookies;
@@ -16,4 +16,4 @@ const isLogged = (req, res, next) => {
     });
 };
 
-export default isLogged;
+module.exports = isLogged;
