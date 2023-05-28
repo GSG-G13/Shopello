@@ -5,7 +5,7 @@ const { Pool } = pg;
 
 const connection = new Pool({
   connectionString: process.env.DEV_DB_URL,
-  ssl: false,
+  ssl: true,
 });
 
 module.exports = connection;
